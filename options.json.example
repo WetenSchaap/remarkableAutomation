@@ -1,0 +1,9 @@
+{
+    "nrcSaveDir" : "home/pi/Downloads", # No other thigs should be in this dir.
+    "nrcRemoteSaveDir" : "Some/Example/Path", # can NOT be "". 
+    "nrcformat" : "PDF", # can be either "PDF" or "ePub". Capitalization matters!
+    "username" : "SomeUserName",
+    "password": "VerySafePassword",
+    "notesTemplate" : "Templates/Notes-template.zip", # not implemented yet.
+    "telegramBotBaseURL" : "https://api.telegram.org/bot123456789/sendMessage?chat_id=10000&text=" # Only needed if you want to use Telegram messages. 
+}
