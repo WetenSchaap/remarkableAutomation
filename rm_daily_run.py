@@ -10,7 +10,7 @@ import messaging
 
 def initialize_logging():
     logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
+    logger.setLevel(logging.DUBUG)
     handler = logging.FileHandler('rmconnect.log')
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -33,6 +33,7 @@ if __name__ == "__main__":
     # now acually do stuff
     dt = datetime.datetime.now()
     if dt.isoweekday() in [1,2,3,4,5]: # workday
+        logger.info( "Today is a working day (ISOwday = {0})".format(dt.isoweekday()) )
         # first try downloading nrc.next newspaper
         try:
             nrcpath = nrc.download_nrcNext(options, logger)
@@ -58,7 +59,8 @@ if __name__ == "__main__":
         # make new labjournal day folder (and later add a notes notebook in this folder)
         rm.make_labjournal_subfolder( dt.strftime("%Y%m%d") )
 
-    elif dt.isoweekday() in [6]: # saturday
+    elif dt.isoweekday() in [6]: # Saturday
+        logger.info( "Today is Saturday (ISOwday = {0})".format(dt.isoweekday()) )
         # first try downloading nrc.next newspaper
         try:
             nrcpath = nrc.download_nrcNext(options, logger)
@@ -81,5 +83,6 @@ if __name__ == "__main__":
             logger.error("Newspaper failed, sending warning")
             messaging.telegram_message("Newspaper to ReMarkable failed!",
                                        options["telegramBotBaseURL"])
-
+    messaging.telegram_message( "Completed the ReMarkable jobs for today!",
+                                options["telegramBotBaseURL"])
     logger.info("All done, stopping for today.")
