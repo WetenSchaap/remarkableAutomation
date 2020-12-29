@@ -10,7 +10,7 @@ import messaging
 
 def initialize_logging():
     logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DUBUG)
+    logger.setLevel(logging.DEBUG)
     handler = logging.FileHandler('rmconnect.log')
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
