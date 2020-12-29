@@ -52,8 +52,9 @@ if __name__ == "__main__":
                 # and clean locally
                 os.remove(pdf)
             logger.info("new newspaper was uploaded")
-        except:
-            logger.error("Newspaper failed, sending warning")
+        except Exception as e:
+            logger.error( "Newspaper failed:\n" + str(e) )
+            logger.info("Sending failure warning")
             messaging.telegram_message("Newspaper to ReMarkable failed!",
                                        options["telegramBotBaseURL"])
         # make new labjournal day folder (and later add a notes notebook in this folder)
@@ -80,7 +81,8 @@ if __name__ == "__main__":
                 os.remove(pdf)
             logger.info("new newspaper was uploaded")
         except:
-            logger.error("Newspaper failed, sending warning")
+            logger.error( "Newspaper failed:\n" + str(e) )
+            logger.info("Sending failure warning")
             messaging.telegram_message("Newspaper to ReMarkable failed!",
                                        options["telegramBotBaseURL"])
     messaging.telegram_message( "Completed the ReMarkable jobs for today!",
