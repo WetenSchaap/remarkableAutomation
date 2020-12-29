@@ -39,7 +39,7 @@ if __name__ == "__main__":
             nrcpath = nrc.download_nrcNext(options, logger)
             logger.debug("nrc.next downloaded")
             # split into pieces before upload:
-            rmpdfs = nrc.nrc_to_rmpdfs(nrcpath, options["nrcSaveDir"])
+            rmpdfs = nrc.nrc_to_rmpdfs(nrcpath, options["nrcLocalSaveDir"])
             logger.debug("nrc split into pieces for upload")
             # clean up original file
             os.remove(nrcpath)
@@ -67,7 +67,7 @@ if __name__ == "__main__":
             nrcpath = nrc.download_nrcNext(options, logger)
             logger.debug("nrc.next downloaded")
             # split into pieces before upload:
-            rmpdfs = nrc.nrc_to_rmpdfs(nrcpath, options["nrcSaveDir"])
+            rmpdfs = nrc.nrc_to_rmpdfs(nrcpath, options["nrcLocalSaveDir"])
             logger.debug("nrc split into pieces for upload")
             # clean up original file
             os.remove(nrcpath)

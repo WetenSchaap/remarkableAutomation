@@ -55,7 +55,6 @@ class ReMarkable():
             name (str): path to template file
         Returns:
             zipdoc (.zip file): new zip file
-        
         """
         loc, newUUID = make_new_UUID( self.templateZip, name )
         zipdoc = rmapy.document.ZipDocument( _id= newUUID, file=loc )
@@ -79,7 +78,7 @@ class ReMarkable():
         if len(docs) == 0:
             pass # should I add a warning or something?
         for d in docs:
-            self.delete(d)
+            self.delete( self.ID_to_path(d) )
 
     def delete(self, doc):
         """
@@ -146,6 +145,20 @@ class ReMarkable():
             IDlist.append(pF.ID)
         return IDlist[-1]
 
+    def ID_to_path( self, ID ):
+       """
+       Recursive function that finds the human readable path for an ID.
+       Args:
+          ID (str): rmCloud ID of a folder or document.
+       Returns:
+          path (str): Human readable path to ID.
+       """
+       c = [ f for f in self.collections if f.ID = ID][0]
+       if c.parent == ""
+          return r"/{}".format( c.VissibleName )
+       else:
+          return self._walk(c.parent) + r"/{}".format( ID.VissibleName )
+
     def find_labjournal_folder( self ):
         return [ f for f in self.get_subfolders('') if f.VissibleName == "Labjournal"][0]
 
@@ -156,6 +169,27 @@ class ReMarkable():
     def get_subfiles(self, parentfolder=""):
         self.discover_filesystem()
         return [ d for d in self.docs if d.Parent == parentfolder ]
+
+    def listdir(self, parentfolder=r"/",filesorfolders=""):
+        """
+        List files and folder in parentfolder. Parentfolder is given as a path, NOT an ID.
+        Using filesorfolders you can set to ony show either subfiles or subfolders.
+        TODO: filesorfolders is not implemented yet!!
+        Args:
+            parentfolder (str): absolute path to folder of which to list content
+            filesorfolders (str): can be "", "folder", "file", whether to look for files of folders or all.
+        Returns:
+            list with (ID, path) string pairs
+        """
+        self.discover_filesystem()
+        ID = self.path_to_ID(parentfolder)
+        files = self.get_subfiles(ID)
+        dirs = self.get_subfolders(ID)
+        result = list()
+        for i in dirs+files:
+            visname = self.ID_to_path(i)
+            result.append( (i,visname) )
+        return result
 
 def make_new_UUID( zipLoc, newName ):
     """

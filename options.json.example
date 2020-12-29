@@ -1,5 +1,5 @@
 {
-    "nrcSaveDir" : "home/pi/Downloads", # No other thigs should be in this dir.
+    "nrcLocalSaveDir" : "home/pi/Downloads", # No other thigs should be in this dir.
     "nrcRemoteSaveDir" : "Some/Example/Path", # can NOT be "". 
     "nrcformat" : "PDF", # can be either "PDF" or "ePub". Capitalization matters!
     "username" : "SomeUserName",
