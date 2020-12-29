@@ -52,8 +52,8 @@ if __name__ == "__main__":
                 # and clean locally
                 os.remove(pdf)
             logger.info("new newspaper was uploaded")
-        except Exception as e:
-            logger.error( "Newspaper failed:\n" + str(e) )
+        except Exception:
+            logger.exception( "Newspaper handling failed:" )
             logger.info("Sending failure warning")
             messaging.telegram_message("Newspaper to ReMarkable failed!",
                                        options["telegramBotBaseURL"])
@@ -81,7 +81,7 @@ if __name__ == "__main__":
                 os.remove(pdf)
             logger.info("new newspaper was uploaded")
         except Exception as e:
-            logger.error( "Newspaper failed:\n" + str(e) )
+            logger.exception( "Newspaper handling failed:" )
             logger.info("Sending failure warning")
             messaging.telegram_message("Newspaper to ReMarkable failed!",
                                        options["telegramBotBaseURL"])

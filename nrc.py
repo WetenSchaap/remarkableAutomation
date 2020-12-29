@@ -93,11 +93,11 @@ def download_nrcNext(options, logger, weekend = False):
 
 def nrc_to_rmpdfs(nrcfile,tempfolder):
     """
-    Converts a basic nrc pdf into many single files, with each page it's 
+    Converts a basic nrc pdf into many single files, with each page it's
     own file. It also cuts pages in 2 for easier reading.
 
     Args:
-        nrcfile (str): path to nrc pdf 
+        nrcfile (str): path to nrc pdf
         tempfolder (str): path to dir to use for saving the individual pages.
 
     Returns:
@@ -127,9 +127,9 @@ def pdf_splitter(path_from, path_to, verbose=False):
 
     Args:
         path_from (str): Path to pdf.
-        path_to (str): dir in which to save results 
+        path_to (str): dir in which to save results
         verbose (bool): print generated filenames, etc.
-    
+
     Returns:
         list_of_files (list of str): List of paths to all created files.
     """
@@ -139,7 +139,7 @@ def pdf_splitter(path_from, path_to, verbose=False):
     for page in range(pdf.getNumPages()):
         pdf_writer = PyPDF4.PdfFileWriter()
         pdf_writer.addPage(pdf.getPage(page))
-        output_filename = os.path.join(path_to, 
+        output_filename = os.path.join(path_to,
                                        '{0}_pagina_{1:03}.pdf'.format(
             fname, page+1))
         list_of_files.append(output_filename)
