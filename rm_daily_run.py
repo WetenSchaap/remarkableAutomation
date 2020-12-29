@@ -80,7 +80,7 @@ if __name__ == "__main__":
                 # and clean locally
                 os.remove(pdf)
             logger.info("new newspaper was uploaded")
-        except:
+        except Exception as e:
             logger.error( "Newspaper failed:\n" + str(e) )
             logger.info("Sending failure warning")
             messaging.telegram_message("Newspaper to ReMarkable failed!",
