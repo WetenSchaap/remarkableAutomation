@@ -78,7 +78,7 @@ class ReMarkable():
         if len(docs) == 0:
             pass # should I add a warning or something?
         for d in docs:
-            self.delete( self.ID_to_path(d) )
+            self.rma.delete( d )
 
     def delete(self, doc):
         """
@@ -153,11 +153,11 @@ class ReMarkable():
        Returns:
           path (str): Human readable path to ID.
        """
-       c = [ f for f in self.collections if f.ID = ID][0]
-       if c.parent == ""
+       c = [ f for f in self.collections if f.ID == ID][0]
+       if c.Parent == "":
           return r"/{}".format( c.VissibleName )
        else:
-          return self._walk(c.parent) + r"/{}".format( ID.VissibleName )
+          return self.ID_to_path(c.Parent) + r"/{}".format( c.VissibleName )
 
     def find_labjournal_folder( self ):
         return [ f for f in self.get_subfolders('') if f.VissibleName == "Labjournal"][0]
