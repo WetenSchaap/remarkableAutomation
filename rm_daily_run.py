@@ -24,7 +24,9 @@ if __name__ == "__main__":
     logger.info('Starting new session')
 
     # load options
-    with open("options.json",'r') as o:
+    script_dir = os.path.dirname(__file__)
+    options_path = os.path.join( script_dir, "options.json" )
+    with open(options_path,'r') as o:
         options = json.load( o )
 
     # connect to cloud
