@@ -20,9 +20,11 @@ By making a `options.json` file, you can run this code as you like, with your ow
 
 ## Requirements
   * [`rmapy`](https://github.com/subutux/rmapy/): for ReMarakable cloud connection
-  * `PyDF4`: for newspaper handling
-  * [`selenium`](https://selenium-python.readthedocs.io/), `xvfb` & `pyvirtualdisplay`: for downloading the newspaper
-
+  * `PyPDF4`: for newspaper handling
+  * For downloading the newspaper
+    * with `pip3`: [`selenium`](https://selenium-python.readthedocs.io/) & `pyvirtualdisplay`
+    * with `apt`: `chromium`, `chromium-chromedriver` & `xvfb`
+    
 ## Goals for the future
   * Initialize empty notes file every day (currently not working because of rmapy (I suspect)).
   * Think of some other cool ideas.
