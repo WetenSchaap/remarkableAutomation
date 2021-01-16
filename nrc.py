@@ -22,6 +22,10 @@ from selenium.webdriver.common.keys import Keys
 import pyvirtualdisplay
 
 def download_nrcNext(options, logger, weekend = False):
+    # before we do anything else, empty the download directory, so we do not accidentally upload yesterdays news
+    filesToRemove = [os.path.join(downloaddir,f) for f in os.listdir(options['nrcLocalSaveDir'])]
+    for f in filesToRemove:
+        os.remove(f) 
     # start with the interesting websites:
     current = datetime.datetime.now()
     login_url = r"https://login.nrc.nl/login"
