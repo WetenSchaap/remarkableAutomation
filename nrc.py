@@ -23,7 +23,8 @@ import pyvirtualdisplay
 
 def download_nrcNext(options, logger, weekend = False):
     # before we do anything else, empty the download directory, so we do not accidentally upload yesterdays news
-    filesToRemove = [os.path.join(downloaddir,f) for f in os.listdir(options['nrcLocalSaveDir'])]
+    downloaddir = option['nrcLocalSaveDir']
+    filesToRemove = [os.path.join(downloaddir,f) for f in os.listdir(downloaddir)]
     for f in filesToRemove:
         os.remove(f) 
     # start with the interesting websites:
