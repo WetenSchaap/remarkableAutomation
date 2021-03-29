@@ -23,7 +23,7 @@ import pyvirtualdisplay
 
 def download_nrcNext(options, logger, weekend = False):
     # before we do anything else, empty the download directory, so we do not accidentally upload yesterdays news
-    downloaddir = option['nrcLocalSaveDir']
+    downloaddir = options['nrcLocalSaveDir']
     filesToRemove = [os.path.join(downloaddir,f) for f in os.listdir(downloaddir)]
     for f in filesToRemove:
         os.remove(f) 
@@ -36,16 +36,18 @@ def download_nrcNext(options, logger, weekend = False):
 
     display = pyvirtualdisplay.Display(visible=0, size=(1600, 1200))
     display.start()
-    driver = webdriver.Chrome()
+    
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_experimental_option('prefs',
                     {
                     "download.default_directory": saveDir,
                     "download.prompt_for_download": False,
                     "download.directory_upgrade": True,
-                    "plugins.plugins_disabled": ["Chrome PDF Viewer"]
+                    "plugins.plugins_disabled": ["Chrome PDF Viewer"],
                     }
     )
+    driver = webdriver.Chrome(options=chrome_options,service_args=["--no-sandbox"])
+
     logger.info("Loging into nrc website")
     driver.get( login_url )
     elementUs = driver.find_element_by_name("username")
