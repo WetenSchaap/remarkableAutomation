@@ -26,5 +26,6 @@ By making a `options.json` file, you can run this code as you like, with your ow
     * with `apt`: `chromium`, `chromium-chromedriver` & `xvfb`
     
 ## Goals for the future
-  * Initialize empty notes file every day (currently not working because of rmapy (I suspect)).
+  * Fix Empty note template file
+  * Pray rmapy is updated before API changes reach my device
   * Think of some other cool ideas.
