@@ -34,7 +34,7 @@ if __name__ == "__main__":
     rm = remarkable.ReMarkable( options )
 
     # notes hcl generation location
-    hcl_file = "./notes.hcl"
+    hcl_file = os.path.join( script_dir, "notes.hcl" )
 
     # now acually do stuff
     dt = datetime.datetime.now()
@@ -42,9 +42,10 @@ if __name__ == "__main__":
         logger.info( "Today is a working day (ISOwday = {0})".format(dt.isoweekday()) )
         # make new labjournal day folder (and later add a notes notebook in this folder)
         date_str = dt.strftime("%Y%m%d")
-        rm.make_labjournal_subfolder( date_str )
-        upload_path = r"Labjournal/" + date_str
-        grn.make_rm_notes(upload_path, hcl_file)
+        # rm.make_labjournal_subfolder( date_str )
+        rmfilename = date_str
+        upload_path = r"Labjournal/"
+        grn.make_rm_notes(upload_path, hcl_file, rmfilename)
 
         # also try downloading nrc.next newspaper
 #        try:

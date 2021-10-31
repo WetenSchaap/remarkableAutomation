@@ -153,3 +153,6 @@ dmypy.json
 .rmapy
 options.json
 rmconnect.log
+notes.zip
+*.pagedata
+*.content
