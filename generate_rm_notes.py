@@ -78,7 +78,7 @@ def make_rm_notes(upload_path, hcl_file, rmfilename):
 
     # first generate file and fix it:
     generate_rm_from_hcl(hcl_file,outfilename)
-    fix_hclgenerated_file(outfilename)
+    fix_hclgenerated_file(outfilename,content_template=r"/home/pi/remarkableAutomation/content-template.json")
     print("File generated and fixed")
 
     # find correct UUID (nessecary due to bug in rmapy)
