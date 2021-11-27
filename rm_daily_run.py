@@ -44,7 +44,7 @@ if __name__ == "__main__":
         date_str = dt.strftime("%Y%m%d")
         # rm.make_labjournal_subfolder( date_str )
         rmfilename = date_str
-        upload_path = r"Labjournal/"
+        upload_path = r"/Labjournal"
         grn.make_rm_notes(upload_path, hcl_file, rmfilename)
 
         # also try downloading nrc.next newspaper
